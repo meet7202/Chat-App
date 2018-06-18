@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   joinned: boolean = false;
   newUser = { nickname: '', room: '' };
   msgData = { room: '', nickname: '', message: '' };
-  socket = io('https://meetchatapp.herokuapp.com:80');
+  socket = io.connect();
 
   constructor(private chatService: ChatService) {}
 
