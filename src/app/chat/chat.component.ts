@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem("user"));
+    setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
     if(user!==null) {
       this.getChatByRoom(user.room);
       this.msgData = { room: user.room, nickname: user.nickname, message: '' }
