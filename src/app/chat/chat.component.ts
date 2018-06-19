@@ -15,12 +15,13 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   joinned: boolean = false;
   newUser = { nickname: '', room: '' };
   msgData = { room: '', nickname: '', message: '' };
-  io.configure(function () { 
+ /* io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 10); 
 });
 socket = new io.Socket();
- // socket = io.connect('http://meetchatapp.herokuapp.com');
+*/ 
+  socket = io.connect('http://meetchatapp.herokuapp.com:'+process.env.PORT);
 
   constructor(private chatService: ChatService) {}
 
