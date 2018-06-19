@@ -6,7 +6,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var Chat = require('../models/Chat.js');
 
-server.listen(process.env.PORT || 4000);
+server.listen(4000);
 
 // socket io
 io.on('connection', function (socket) {
