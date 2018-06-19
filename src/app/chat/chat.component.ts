@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 });
 socket = new io.Socket();
 */ 
-  socket = io.connect('http://meetchatapp.herokuapp.com:'+process.env.PORT);
+  socket = io.connect();
 
   constructor(private chatService: ChatService) {}
 
