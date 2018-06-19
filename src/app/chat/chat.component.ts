@@ -15,13 +15,18 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   joinned: boolean = false;
   newUser = { nickname: '', room: '' };
   msgData = { room: '', nickname: '', message: '' };
-  socket = io.connect('http://meetchatapp.herokuapp.com');
+  io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
+socket = new io.Socket();
+ // socket = io.connect('http://meetchatapp.herokuapp.com');
 
   constructor(private chatService: ChatService) {}
 
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem("user"));
-    setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+   // setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
     if(user!==null) {
       this.getChatByRoom(user.room);
       this.msgData = { room: user.room, nickname: user.nickname, message: '' }
